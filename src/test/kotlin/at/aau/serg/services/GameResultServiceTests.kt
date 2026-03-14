@@ -73,12 +73,23 @@ class GameResultServiceTests {
     }
 
     @Test
-    fun test_deleteGameResult_target() {
+    fun test_deleteGameResult_correctId() {
         val first = GameResult(0, "first", 20, 20.0)
         service.addGameResult(first)
         service.deleteGameResult(first.id)
         assertEquals(0, service.getGameResults().size)
     }
+
+    /*
+    @Test
+    fun test_deleteGameResult_invalidId() {
+        val first = GameResult(0, "first", 20, 20.0)
+        service.addGameResult(first)
+        service.deleteGameResult(200)
+        assertEquals(1, service.getGameResults().size)
+    }
+    */
+
 
 
 }
