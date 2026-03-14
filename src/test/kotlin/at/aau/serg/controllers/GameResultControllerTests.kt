@@ -61,6 +61,13 @@ class GameResultControllerTests {
         verify(mockedService).addGameResult(first)
     }
 
+    @Test
+    fun test_deleteGameResult() {
+        val first = GameResult(1, "first", 20, 20.0)
+        controller.deleteGameResult(first.id)
+        verify(mockedService).deleteGameResult(first.id)
+    }
+
 
 
 
