@@ -68,5 +68,16 @@ class LeaderboardControllerTests {
     }
 
 
+    @Test
+    fun test_getLeaderboard_invalidRankZero_returns400() {
+        whenever(mockedService.getGameResults()).thenReturn(listOf(GameResult(1, "first", 20, 10.0)))
+        val res = controller.getLeaderboard(0)
+        assertEquals(400,res.statusCode.value())
+    }
+
+
+
+
+
 
 }
