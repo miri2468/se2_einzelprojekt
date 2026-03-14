@@ -8,6 +8,7 @@ import org.mockito.Mockito.`when` as whenever
 import kotlin.test.Test
 import kotlin.test.assertEquals
 import kotlin.test.assertNull
+import org.mockito.Mockito.verify
 
 
 class GameResultControllerTests {
@@ -51,6 +52,16 @@ class GameResultControllerTests {
         assertEquals(second, res[1])
         assertEquals(third, res[2])
     }
+
+    @Test
+    fun test_addGameResult() {
+        val first = GameResult(1, "first", 20, 20.0)
+        controller.addGameResult(first)
+
+        verify(mockedService).addGameResult(first)
+    }
+
+
 
 
 }
