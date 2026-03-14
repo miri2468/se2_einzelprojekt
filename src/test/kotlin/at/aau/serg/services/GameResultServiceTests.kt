@@ -89,7 +89,4 @@ class GameResultServiceTests {
         assertEquals(1, service.getGameResults().size)
     }
 
-
-
-
 }
