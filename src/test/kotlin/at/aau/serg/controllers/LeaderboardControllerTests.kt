@@ -83,6 +83,14 @@ class LeaderboardControllerTests {
         assertEquals(400,res.statusCode.value())
     }
 
+    @Test
+    fun test_getLeaderboard_validRank_success() {
+        val result = (1..6).map { GameResult(it.toLong(), "P$it", it *40, it * 4.0)}
+        whenever(mockedService.getGameResults()).thenReturn(result)
 
+        val res = controller.getLeaderboard(1)
+        assertEquals(200,res.statusCode.value())
+        assertEquals(4, res.body?.size)
+    }
 
 }
