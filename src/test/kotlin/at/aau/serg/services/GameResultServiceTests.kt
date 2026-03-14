@@ -80,7 +80,7 @@ class GameResultServiceTests {
         assertEquals(0, service.getGameResults().size)
     }
 
-    /*
+
     @Test
     fun test_deleteGameResult_invalidId() {
         val first = GameResult(0, "first", 20, 20.0)
@@ -88,7 +88,7 @@ class GameResultServiceTests {
         service.deleteGameResult(200)
         assertEquals(1, service.getGameResults().size)
     }
-    */
+
 
 
 
