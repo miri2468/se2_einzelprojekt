@@ -28,6 +28,7 @@ class GameResultControllerTests {
         whenever(mockedService.getGameResult(1)).thenReturn(first)
 
         val res = controller.getGameResult(1)
+        verify(mockedService).getGameResult(1)
         assertEquals(first, res)
     }
 
@@ -36,21 +37,19 @@ class GameResultControllerTests {
         whenever(mockedService.getGameResult(200)).thenReturn(null)
 
         val res = controller.getGameResult(200)
+        verify(mockedService).getGameResult(200)
         assertNull(res)
     }
 
     @Test
     fun test_getGameResults_returnsAll() {
-        val first = GameResult(1, "first", 20, 20.0)
-        val second = GameResult(2, "second", 15, 10.0)
-        val third = GameResult(3, "third", 10, 15.0)
-        whenever(mockedService.getGameResults()).thenReturn(listOf(first,second,third))
+        val gameResult = listOf(GameResult(1, "first", 20, 20.0))
+        whenever(mockedService.getGameResults()).thenReturn(gameResult)
 
         val res = controller.getAllGameResults()
-        assertEquals(3, res.size)
-        assertEquals(first, res[0])
-        assertEquals(second, res[1])
-        assertEquals(third, res[2])
+        verify(mockedService).getGameResults()
+
+        assertEquals(gameResult, res)
     }
 
     @Test
