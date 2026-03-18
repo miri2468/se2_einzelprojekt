@@ -74,20 +74,29 @@ class GameResultServiceTests {
 
     @Test
     fun test_deleteGameResult_correctId() {
+        //arrange
         val result = GameResult(0, "first", 20, 20.0)
         service.addGameResult(result)
         assertEquals(1, service.getGameResults().size)
 
+        //act
         service.deleteGameResult(1)
+
+        //asser: list is empty after deletion
         assertEquals(0, service.getGameResults().size)
     }
 
 
     @Test
     fun test_deleteGameResult_invalidId() {
+        //arrange
         val result = GameResult(0, "first", 20, 20.0)
         service.addGameResult(result)
+
+        //act: delete if non existing id
         service.deleteGameResult(200)
+
+        //assert: list remains unchanged
         assertEquals(1, service.getGameResults().size)
     }
 
