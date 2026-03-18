@@ -104,13 +104,16 @@ class LeaderboardControllerTests {
     }
 
     @Test
-    fun test_test_getLeaderboard_endRank_success() {
-        val result = (1..10).map { GameResult(it.toLong(), "P$it", (11-it)*10, it.toDouble())}
+    fun test_getLeaderboard_endRank_success() {
+        val result = (1..10).map { GameResult(it.toLong(), "player$it", (11-it)*10, it.toDouble())}
         whenever(mockedService.getGameResults()).thenReturn(result)
 
         val res = controller.getLeaderboard(10)
-        assertEquals(200,res.statusCode.value())
-        assertEquals(4, res.body?.size)
+        val body = res.body!!
+
+        assertEquals(4, body.size)
+        assertEquals("player7", body[0].playerName)
+        assertEquals("player10", body[3].playerName)
     }
 
 }
