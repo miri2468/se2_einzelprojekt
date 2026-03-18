@@ -77,8 +77,8 @@ class LeaderboardControllerTests {
 
     @Test
     fun test_getLeaderboard_invalidRankLarge_returns400() {
-        whenever(mockedService.getGameResults()).thenReturn(listOf(GameResult(1, "first", 20, 10.0)))
-
+        val result = (1..10).map { GameResult(it.toLong(), "player$it", (11-it)*10, it.toDouble()) }
+        whenever(mockedService.getGameResults()).thenReturn(result)
         val res = controller.getLeaderboard(200)
         assertEquals(400,res.statusCode.value())
     }
