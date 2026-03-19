@@ -96,7 +96,7 @@ class LeaderboardControllerTests {
         whenever(mockedService.getGameResults()).thenReturn(result)
 
         //act: rank exceeds list size
-        val res = controller.getLeaderboard(200)
+        val res = controller.getLeaderboard(11)
 
         //assert: returns 400 bad request
         assertEquals(400,res.statusCode.value())
